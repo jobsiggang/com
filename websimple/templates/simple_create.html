@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>나의 웹서비스 개발</title>
+  </head>
+  <body>
+    <h1>학생 정보 입력</h1>
+    <form action="/simplecreate" method="POST">
+      <label>이  름 : </label>
+      <input type="text" id="id_name" name="name" /></br>
+      <label>전화번호 : </label>
+      <input type="text" id="id_url" name="tel" /><br />
+      <label>세부내용 : </label><br>
+      <textarea id="id_content" name="content" style="width : 50%; height: 200px"></textarea><br>
+      <button type="submit">저장</button>
+      <button type="reset">초기화</button>
+      <button type="button" onclick='window.location.href = "/simplelist";'>
+    </form>
+      목록
+    </button>
+  </body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>나의 웹서비스 개발</title>
+  </head>
+  <body>
+    <h1 id="id_name">이름이들어갈 부분</h1>
+    <img src="이미지 소스가 들어감" id="id_image" />
+    <p><span>아이디:</span> <span id="id_id">여기에 아이디가 들어감</span></p>
+    <p>
+      <span>전화번호:</span> <span id="id_tel">여기에 전화번호 들어감</span>
+    </p>
+    <p>세부내용</p>
+    <p id="id_content">여기가 세부내용이 들어감</p>
+    <form
+      action="삭제할 주소와 아이디가 들어감"
+      method="post"
+      id="id_form"
+      enctype="multipart/form-data"
+    >
+      <button type="submit">삭제하기</button>
+    </form>
+    <button type="button" onclick="moveUpdate()">수정하는 함수 호출</button>
+    <button type="button" onclick="moveList()">목록으로 가는 함수 호출</button>
+  </body>
+  <script>
+    let data={{selected|tojson}};
+    data['content']=data['content'].replaceAll("\n","<br>"); //줄바꿈 문자를 html태그 줄바꿈으로 교체
+     console.log('data',data)
+     document.querySelector('#id_name').innerHTML=`사용자 ${data['name']}의 세부정보`;
+     document.querySelector('#id_id').innerHTML=data['id'];
+     document.querySelector('#id_tel').innerHTML=data['tel'];
+     document.querySelector('#id_content').innerHTML=data['content'];
+     if (data['image']!==""){
+      document.querySelector('#id_image').src="/static/images/"+data['image'];
+     }
+     else{
+      document.querySelector('#id_image').src="/static/images/noimage.jpg";
+    }
+
+    document.querySelector('#id_form').action="/userdelete/"+data['id']; //삭제할 주소와 아이디가들어감
+
+     function moveUpdate(){
+         window.location.href=`/userupdate/${data['id']}` //현재창의 주소를 바꿔줌
+     }
+
+     function moveList(){
+         window.location.href="/userlist"
+     }
+  </script>
+</html>
